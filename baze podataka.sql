@@ -5,17 +5,17 @@ i aktivirati je.
 create database ispit_24_06_2021
 use ispit_24_06_2021
 ---------------------------------------------------------------------------
---Prilikom kreiranja tabela voditi raèuna o njihovom meğusobnom odnosu.
+--Prilikom kreiranja tabela voditi raÄuna o njihovom meÄ‘usobnom odnosu.
 ---------------------------------------------------------------------------
 /*
 a) 
-Kreirati tabelu prodavac koja æe imati sljedeæu strukturu:
-	- prodavac_id, cjelobrojni tip, primarni kljuè
+Kreirati tabelu prodavac koja Ä‡e imati sljedeÄ‡u strukturu:
+	- prodavac_id, cjelobrojni tip, primarni kljuÄ
 	- naziv_posla, 50 unicode karaktera
 	- dtm_rodj, datumski tip
 	- bracni_status, 1 karakter
-	- prod_kvota, novèani tip
-	- bonus, novèani tip
+	- prod_kvota, novÄani tip
+	- bonus, novÄani tip
 */
 
 create table prodavac(
@@ -30,8 +30,8 @@ constraint PK_prodavac primary key(prodavac_id)
 select * from prodavac
 /*
 b) 
-Kreirati tabelu prodavnica koja æe imati sljedeæu strukturu:
-	- prodavnica_id, cjelobrojni tip, primarni kljuè
+Kreirati tabelu prodavnica koja Ä‡e imati sljedeÄ‡u strukturu:
+	- prodavnica_id, cjelobrojni tip, primarni kljuÄ
 	- naziv_prodavnice, 50 unicode karaktera
 	- prodavac_id, cjelobrojni tip
 */
@@ -47,14 +47,14 @@ select * from prodavnica
 
 /*
 c) 
-Kreirati tabelu kupac_detalji koja æe imati sljedeæu strukturu:
-	- detalj_id, cjelobrojni tip, primarni kljuè, automatsko punjenje sa poèetnom vrijednošæu 1 i inkrementom 1
-	- kupac_id, cjelobrojni tip, primarni kljuè
+Kreirati tabelu kupac_detalji koja Ä‡e imati sljedeÄ‡u strukturu:
+	- detalj_id, cjelobrojni tip, primarni kljuÄ, automatsko punjenje sa poÄetnom vrijednoÅ¡Ä‡u 1 i inkrementom 1
+	- kupac_id, cjelobrojni tip, primarni kljuÄ
 	- prodavnica_id, cjelobrojni tip
 	- br_rac, 10 karaktera
 	- dtm_narudz, datumski tip
-	- kolicina, skraæeni cjelobrojni tip
-	- cijena, novèani tip
+	- kolicina, skraÄ‡eni cjelobrojni tip
+	- cijena, novÄani tip
 	- popust, realni tip
 */
 
@@ -79,16 +79,12 @@ constraint FK_prodavnica_kupac_detalji foreign key(prodavnica_id) references pro
 select * from kupac_detalji
 
 
-
-
-
-
 --2.
 /*
 a)
-Koristeæi tabele HumanResources.Employee i Sales.SalesPerson
-baze AdventureWorks2017 zvršiti insert podataka u 
-tabelu prodavac prema sljedeæem pravilu:
+KoristeÄ‡i tabele HumanResources.Employee i Sales.SalesPerson
+baze AdventureWorks2017 zvrÅ¡iti insert podataka u 
+tabelu prodavac prema sljedeÄ‡em pravilu:
 	- BusinessEntityID -> prodavac_id
 	- JobTitle -> naziv_posla
 	- BirthDate -> dtm_rodj
@@ -104,9 +100,9 @@ on e.BusinessEntityID=sp.BusinessEntityID
 select * from prodavac
 /*
 b)
-Koristeæi tabelu Sales.Store baze AdventureWorks2017 
-izvršiti insert podataka u tabelu prodavnica 
-prema sljedeæem pravilu:
+KoristeÄ‡i tabelu Sales.Store baze AdventureWorks2017 
+izvrÅ¡iti insert podataka u tabelu prodavnica 
+prema sljedeÄ‡em pravilu:
 	- BusinessEntityID -> prodavnica_id
 	- Name -> naziv_prodavnice
 	- SalesPersonID -> prodavac_id
@@ -119,9 +115,9 @@ from AdventureWorks2017.Sales.Store
 select * from prodavnica
 /*
 b)
-Koristeæi tabele Sales.Customer, Sales.SalesOrderHeader i SalesOrderDetail
-baze AdventureWorks2017 izvršiti insert podataka u tabelu kupac_detalji
-prema sljedeæem pravilu:
+KoristeÄ‡i tabele Sales.Customer, Sales.SalesOrderHeader i SalesOrderDetail
+baze AdventureWorks2017 izvrÅ¡iti insert podataka u tabelu kupac_detalji
+prema sljedeÄ‡em pravilu:
 	- CustomerID -> kupac_id
 	- StoreID -> prodavnica_id
 	- AccountNumber -> br_rac
@@ -149,18 +145,18 @@ select * from kupac_detalji
 --3.
 /*
 a)
-U tabeli prodavac dodati izraèunatu kolonu god_rodj
-u koju æe se smještati godina roğenja prodavca.
+U tabeli prodavac dodati izraÄunatu kolonu god_rodj
+u koju Ä‡e se smjeÅ¡tati godina roÄ‘enja prodavca.
 b)
 U tabeli kupac_detalji promijeniti tip podatka
-kolone cijena iz novèanog u decimalni tip oblika (8,2)
+kolone cijena iz novÄanog u decimalni tip oblika (8,2)
 c)
 U tabeli kupac_detalji dodati standardnu kolonu
 lozinka tipa 20 unicode karaktera.
 d) 
 Kolonu lozinka popuniti tako da bude spojeno 
-10 sluèajno generisanih znakova i 
-numerièki dio (bez vodeæih nula) iz kolone br_rac
+10 sluÄajno generisanih znakova i 
+numeriÄki dio (bez vodeÄ‡ih nula) iz kolone br_rac
 */
 
 
@@ -184,9 +180,9 @@ select * from kupac_detalji
 
 --4.
 /*
-Koristeæi tabele prodavnica i kupac_detalji
-dati pregled sumiranih kolièina po 
-nazivu prodavnice i godini naruèivanja.
+KoristeÄ‡i tabele prodavnica i kupac_detalji
+dati pregled sumiranih koliÄina po 
+nazivu prodavnice i godini naruÄivanja.
 Sortirati po nazivu prodavnice.
 */
 
@@ -203,12 +199,12 @@ Sortirati po nazivu prodavnice.
 
 --5.
 /*
-Kreirati pogled v_prodavac_cijena sljedeæe strukture:
+Kreirati pogled v_prodavac_cijena sljedeÄ‡e strukture:
 	- prodavac_id
 	- bracni_status
 	- sum_cijena
 Uslov je da se u pogled dohvate samo oni zapisi u 
-kojima je sumirana vrijednost veæa od 1000000.
+kojima je sumirana vrijednost veÄ‡a od 1000000.
 */
 
 go
@@ -227,11 +223,11 @@ select * from v_prodavac_cijena
 
 --6.
 /*
-Koristeæi pogled v_prodavac_cijena
+KoristeÄ‡i pogled v_prodavac_cijena
 kreirati proceduru p_prodavac_cijena sa parametrom
-bracni_status èija je zadata (default) vrijednost M.
+bracni_status Äija je zadata (default) vrijednost M.
 Uslov je da se procedurom dohvataju zapisi u kojima je 
-vrijednost u koloni sum_cijena veæa od srednje vrijednosti kolone sum_cijena.
+vrijednost u koloni sum_cijena veÄ‡a od srednje vrijednosti kolone sum_cijena.
 Obavezno napisati kod za pokretanje procedure.
 */
 
@@ -255,8 +251,8 @@ exec p_prodavac_cijena 'S'
 Iz tabele kupac_detalji prikazati zapise u kojima je 
 vrijednost u koloni cijena jednaka 
 minimalnoj, odnosno, maksimalnoj vrijednosti u ovoj koloni.
-Upit treba da vraæa kolone kupac_id, prodavnica_id i cijena.
-Sortirati u rastuæem redoslijedu prema koloni cijena.
+Upit treba da vraÄ‡a kolone kupac_id, prodavnica_id i cijena.
+Sortirati u rastuÄ‡em redoslijedu prema koloni cijena.
 */
 
 
